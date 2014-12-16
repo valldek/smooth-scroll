@@ -1,6 +1,6 @@
 var smooth = {
-	duration : 500,
-	steps : 50,
+	duration : 1000,
+	steps : 20,
 	fixedTop: 0,
 
 
@@ -37,9 +37,16 @@ var smooth = {
 		}
 		return h;
 	},
-	getAnchorPos : function(el){
-		var ap = document.getElementById(el);
-		return ap.offsetTop;
+	getAnchorPos : function(id){
+		var ap = 0;
+		var el = document.getElementById(id);
+		do {
+			ap += el.offsetTop;
+			el = el.offsetParent;
+		} while (el.offsetParent != null && el.offsetParent != undefined);
+
+		var ch = document.body.scrollHeight - document.documentElement.clientHeight;
+		return (ch < ap) ? ch : ap;
 	},
 	getCurrentPos : function(){
 		var cp = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
