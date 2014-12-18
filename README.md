@@ -14,7 +14,7 @@ or copy and paste smooth object into your script
 
 adding inline event handler to your html:
 ```html
-<a href="#some_anchor" smooth.init(event,this)>some_anchor</a>
+<a href="#some_anchor" onclick="smooth.init(event,this)">some_anchor</a>
 ...
 <section id="some_anchor">
 ```
